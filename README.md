@@ -382,3 +382,37 @@ Puis le menu
     <a href="{{ path('app_admin_article_crud_index') }}">Crud des articles</a>
 </nav>
 ```
+
+### Design des formulaires
+
+Il existe des designs pré-établis dans Symfony :
+
+https://symfony.com/doc/current/form/form_themes.html#symfony-builtin-forms
+
+Si on veut en utiliser un principal, on va ouvrir le fichier
+
+    config/packages/twig.yaml
+
+Et rajouter
+
+```twig
+twig:
+    file_name_pattern: '*.twig'
+    # pour les formulaires par défaut
+    form_themes: ['bootstrap_5_layout.html.twig']
+
+when@test:
+    twig:
+        strict_variables: true
+
+```
+
+Notre formulaire est généré avec de l'html maintenant compatible avec Bootstrap !
+
+Nous allons ajouter bootstrap avec `AssetMapper`
+
+    php bin/console debug:asset-map --full
+
+On va importer `Bootstrap 5` :
+
+    php bin/console importmap:require bootstrap
