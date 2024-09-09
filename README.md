@@ -416,3 +416,23 @@ Nous allons ajouter bootstrap avec `AssetMapper`
 On va importer `Bootstrap 5` :
 
     php bin/console importmap:require bootstrap
+
+On va mettre le lien vers le css dans le fichier `assets/app.js` car `AssetMapper` ne prend pas en charge le css (actuel)
+
+```javascript
+/*
+assets/app.js
+ */
+import './bootstrap.js';
+/*
+ * Welcome to your app's main JavaScript file!
+ *
+ * This file will be included onto the page via the importmap() Twig function,
+ * which should already be in your base.html.twig.
+ */
+// notre fichier bootsrtap
+import './vendor/bootstrap/dist/css/bootstrap.min.css';
+import './styles/app.css';
+
+console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+```
